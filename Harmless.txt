@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmless Fun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #message {
+            display: none;
+            font-size: 18px;
+            color: red;
+        }
+    </style>
+    <script>
+        function showMessage() {
+            let messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'block';
+            let count = 10;
+
+            let interval = setInterval(function() {
+                if (count > 0) {
+                    messageDiv.innerHTML = "I told you not to click! " + count + " more times!";
+                    count--;
+                } else {
+                    clearInterval(interval);
+                    messageDiv.style.display = 'none';
+                }
+            }, 1000);
+
+            setTimeout(function() {
+                clearInterval(interval);
+                messageDiv.style.display = 'none';
+            }, 5000); // Ensures message goes away after 5 seconds if they don't click 10 times
+        }
+    </script>
+</head>
+<body>
+
+    <p>Whatever you do, <a href="javascript:void(0);" onclick="showMessage();">don't click here!</a></p>
+    <div id="message">I told you not to click!</div>
+
+</body>
+</html>
